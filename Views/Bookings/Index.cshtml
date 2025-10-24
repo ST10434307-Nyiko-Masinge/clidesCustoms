@@ -1,0 +1,82 @@
+@model IEnumerable<ClidesCustoms.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="section-title">
+        <span class="title-icon"><i class="fas fa-calendar-alt"></i></span>
+        Service Bookings
+    </h2>
+    <a asp-action="Create" class="btn futuristic-btn-primary btn-lg">
+        <i class="fas fa-plus me-2"></i>
+        <span>New Booking</span>
+        <div class="btn-glow"></div>
+    </a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Vehicle</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Customer?.FirstName @booking.Customer?.LastName</td>
+                    <td>@booking.Service?.Name</td>
+                    <td>@booking.VehicleYear @booking.VehicleMake @booking.VehicleModel</td>
+                    <td>@booking.BookingDate</td>
+                    <td>
+                        <span class="badge @(booking.status == "confirmed" ? "bg-success" : 
+                                           booking.status == "pending" ? "bg-warning" : 
+                                           booking.status == "completed" ? "bg-info" : "bg-danger")">
+                            @booking.status
+                        </span>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Details" asp-route-id="@booking.Id" class="btn btn-outline-primary btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <h4 class="text-muted">No bookings found</h4>
+        <p class="text-muted">Create your first booking to get started.</p>
+        <a asp-action="Create" class="btn btn-primary">New Booking</a>
+    </div>
+}

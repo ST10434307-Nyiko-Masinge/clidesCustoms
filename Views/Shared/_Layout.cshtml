@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ClidesCustoms</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ClidesCustoms.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <header class="futuristic-header">
+        <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
+            <div class="container-fluid">
+                <a class="navbar-brand futuristic-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-car-side me-2"></i>
+                    <span class="brand-text">ClidesCustoms</span>
+                    <div class="brand-glow"></div>
+                </a>
+                <button class="navbar-toggler futuristic-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 futuristic-nav">
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Services" asp-action="Index">
+                                <i class="fas fa-tools me-1"></i>Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Products" asp-action="Index">
+                                <i class="fas fa-shopping-cart me-1"></i>Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Bookings" asp-action="Index">
+                                <i class="fas fa-calendar-alt me-1"></i>Bookings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Orders" asp-action="Index">
+                                <i class="fas fa-receipt me-1"></i>Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link futuristic-link" asp-area="" asp-controller="Customers" asp-action="Index">
+                                <i class="fas fa-users me-1"></i>Customers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="futuristic-main">
+        @RenderBody()
+    </main>
+
+    <footer class="futuristic-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-brand">
+                        <i class="fas fa-car-side me-2"></i>
+                        <span>ClidesCustoms</span>
+                    </div>
+                    <p class="footer-text">Premium automotive services and parts</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-copyright">&copy; 2025 - ClidesCustoms - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="footer-link">Privacy</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

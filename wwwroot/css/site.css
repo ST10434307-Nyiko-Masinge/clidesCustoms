@@ -1,0 +1,1179 @@
+/* ===== FUTURISTIC CLIDESCUSTOMS DESIGN ===== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
+
+/* CSS Variables for Theme */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --dark-bg: #0a0a0a;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b347d9;
+  --neon-pink: #ff6b9d;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.futuristic-body {
+  background: var(--dark-bg);
+  position: relative;
+}
+
+/* Animated Background */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  opacity: 0.1;
+  animation: float 20s infinite linear;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 10%;
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: -10s;
+}
+
+.shape-4 {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  right: 30%;
+  animation-delay: -15s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(120deg); }
+  66% { transform: translateY(30px) rotate(240deg); }
+}
+
+/* Navigation */
+.futuristic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-nav {
+  background: transparent !important;
+  padding: 1rem 0;
+}
+
+.futuristic-brand {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--neon-blue) !important;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.futuristic-brand:hover {
+  color: var(--neon-purple) !important;
+  transform: scale(1.05);
+}
+
+.brand-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-gradient);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.futuristic-brand:hover .brand-glow {
+  opacity: 0.3;
+}
+
+.futuristic-nav .nav-link {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  padding: 0.8rem 1.2rem !important;
+  margin: 0 0.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gradient);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.futuristic-nav .nav-link:hover::before {
+  left: 0;
+}
+
+.futuristic-nav .nav-link:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Main Content Spacing */
+.futuristic-main {
+  padding-top: 100px; /* Add space for fixed navigation */
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.futuristic-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  padding-top: 100px; /* Ensure hero content is below nav */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from { filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5)); }
+  to { filter: drop-shadow(0 0 30px rgba(118, 75, 162, 0.8)); }
+}
+
+.brand-highlight {
+  display: block;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 1s ease 0.5s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.futuristic-btn-primary,
+.futuristic-btn-secondary {
+  position: relative;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.futuristic-btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.futuristic-btn-secondary {
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+}
+
+.futuristic-btn-primary:hover,
+.futuristic-btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  color: white;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.futuristic-btn-primary:hover .btn-glow,
+.futuristic-btn-secondary:hover .btn-glow {
+  opacity: 0.2;
+}
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-card {
+  width: 200px;
+  height: 200px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: var(--neon-blue);
+  position: relative;
+  animation: floatCard 6s ease-in-out infinite;
+  backdrop-filter: blur(20px);
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.card-glow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: var(--accent-gradient);
+  border-radius: 25px;
+  opacity: 0.3;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.floating-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.element {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--neon-purple);
+  border-radius: 50%;
+  animation: orbit 8s linear infinite;
+}
+
+.element-1 {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  top: 60%;
+  right: 20%;
+  animation-delay: -2s;
+}
+
+.element-3 {
+  bottom: 20%;
+  left: 60%;
+  animation-delay: -4s;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/* Hero Particles */
+.hero-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--neon-blue);
+  border-radius: 50%;
+  animation: particleFloat 10s linear infinite;
+}
+
+.particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 40%; left: 80%; animation-delay: -2s; }
+.particle:nth-child(3) { top: 70%; left: 20%; animation-delay: -4s; }
+.particle:nth-child(4) { top: 30%; left: 70%; animation-delay: -6s; }
+.particle:nth-child(5) { top: 80%; left: 60%; animation-delay: -8s; }
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+/* Featured Sections */
+.featured-section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.products-section {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-icon {
+  color: var(--neon-blue);
+  margin-right: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* Futuristic Cards */
+.futuristic-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.futuristic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.futuristic-card:hover::before {
+  opacity: 0.1;
+}
+
+.futuristic-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+  border-color: var(--neon-blue);
+}
+
+.card-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.futuristic-card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.futuristic-card:hover .image-overlay {
+  opacity: 0.3;
+}
+
+.card-category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--neon-blue);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.stock-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--neon-purple);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.card-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.card-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.meta-item i {
+  color: var(--neon-blue);
+}
+
+.card-footer {
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+.futuristic-btn-card {
+  width: 100%;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-btn-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.futuristic-btn-card:hover::before {
+  left: 0;
+}
+
+.futuristic-btn-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 5rem 0;
+  background: var(--primary-gradient);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.cta-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.futuristic-btn-cta,
+.futuristic-btn-cta-outline {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-btn-cta {
+  background: white;
+  color: var(--neon-blue);
+  border: 2px solid white;
+}
+
+.futuristic-btn-cta-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.futuristic-btn-cta:hover,
+.futuristic-btn-cta-outline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer */
+.futuristic-footer {
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid var(--glass-border);
+  padding: 2rem 0;
+  backdrop-filter: blur(20px);
+}
+
+.footer-brand {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neon-blue);
+  margin-bottom: 0.5rem;
+}
+
+.footer-text {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.footer-copyright {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.footer-link {
+  color: var(--neon-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--neon-purple);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: var(--neon-blue);
+  margin-bottom: 1rem;
+}
+
+.empty-state h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Futuristic Forms */
+.futuristic-form-section {
+  padding: 5rem 0;
+  min-height: calc(100vh - 100px); /* Account for fixed nav */
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  margin-top: 100px; /* Add margin for fixed navigation */
+}
+
+.futuristic-form-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  padding: 3rem;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.futuristic-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.form-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.form-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.futuristic-form {
+  position: relative;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.futuristic-label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.futuristic-label i {
+  color: var(--neon-blue);
+  font-size: 0.9rem;
+}
+
+.futuristic-input,
+.futuristic-textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--glass-border);
+  border-radius: 15px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.futuristic-input::placeholder,
+.futuristic-textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.futuristic-input:focus,
+.futuristic-textarea:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.futuristic-input:hover,
+.futuristic-textarea:hover {
+  border-color: var(--neon-purple);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.futuristic-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.validation-error {
+  color: #ff6b9d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.futuristic-alert {
+  background: rgba(255, 107, 157, 0.1);
+  border: 1px solid #ff6b9d;
+  border-radius: 15px;
+  color: #ff6b9d;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.futuristic-btn-primary,
+.futuristic-btn-secondary {
+  position: relative;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.futuristic-btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.futuristic-btn-secondary {
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+}
+
+.futuristic-btn-primary:hover,
+.futuristic-btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+  color: white;
+}
+
+.futuristic-btn-primary:hover .btn-glow,
+.futuristic-btn-secondary:hover .btn-glow {
+  opacity: 0.3;
+}
+
+/* Form Focus States */
+.form-group.focused .futuristic-label {
+  color: var(--neon-blue);
+}
+
+.form-group.focused .futuristic-input,
+.form-group.focused .futuristic-textarea {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+}
+
+/* Enhanced Button Styling */
+.btn-lg {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-lg:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.btn-lg .btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-lg:hover .btn-glow {
+  transform: translateX(100%);
+}
+
+/* Section Title Styling */
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  animation: pulse 2s infinite;
+}
+
+/* Page Content Spacing */
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Responsive Form Design */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .futuristic-form-card {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .form-title {
+    font-size: 2rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .futuristic-btn-primary,
+  .futuristic-btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .title-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons,
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .futuristic-card {
+    margin-bottom: 2rem;
+  }
+  
+  .floating-card {
+    width: 150px;
+    height: 150px;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .futuristic-btn-primary,
+  .futuristic-btn-secondary,
+  .futuristic-btn-cta,
+  .futuristic-btn-cta-outline {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}

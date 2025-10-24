@@ -1,0 +1,94 @@
+@model ClidesCustoms.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<h2>Edit Booking</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="form-label">Customer</label>
+                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.Customers, "Id", "FirstName"))">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="ServiceId" class="form-label">Service</label>
+                <select asp-for="ServiceId" class="form-select" asp-items="@(new SelectList(ViewBag.Services, "Id", "Name"))">
+                    <option value="">-- Select Service --</option>
+                </select>
+                <span asp-validation-for="ServiceId" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="BookingDate" class="form-label"></label>
+                <input asp-for="BookingDate" class="form-control" type="date" />
+                <span asp-validation-for="BookingDate" class="text-danger"></span>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label asp-for="VehicleMake" class="form-label"></label>
+                        <input asp-for="VehicleMake" class="form-control" />
+                        <span asp-validation-for="VehicleMake" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label asp-for="VehicleModel" class="form-label"></label>
+                        <input asp-for="VehicleModel" class="form-control" />
+                        <span asp-validation-for="VehicleModel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label asp-for="VehicleYear" class="form-label"></label>
+                        <input asp-for="VehicleYear" class="form-control" />
+                        <span asp-validation-for="VehicleYear" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="licensePlate" class="form-label"></label>
+                <input asp-for="licensePlate" class="form-control" />
+                <span asp-validation-for="licensePlate" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="status" class="form-label"></label>
+                <select asp-for="status" class="form-select">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="notes" class="form-label"></label>
+                <textarea asp-for="notes" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,47 @@
+@model ClidesCustoms.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        @if (!string.IsNullOrEmpty(Model.ImageURL))
+        {
+            <img src="@Model.ImageURL" class="img-fluid rounded" alt="@Model.Name">
+        }
+    </div>
+    <div class="col-md-6">
+        <h2>@Model.Name</h2>
+        <p class="lead">@Model.Description</p>
+        
+        <div class="mb-3">
+            <strong>Brand:</strong> @Model.Brand
+        </div>
+        <div class="mb-3">
+            <strong>Category:</strong> @Model.Category
+        </div>
+        <div class="mb-3">
+            <strong>Stock Quantity:</strong> @Model.StockQuantity units
+        </div>
+        <div class="mb-3">
+            <strong>Price:</strong> <span class="text-primary h4">R @Model.Price.ToString("F2")</span>
+        </div>
+        <div class="mb-3">
+            <strong>Status:</strong> 
+            @if (Model.IsActive)
+            {
+                <span class="badge bg-success">Active</span>
+            }
+            else
+            {
+                <span class="badge bg-secondary">Inactive</span>
+            }
+        </div>
+        
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

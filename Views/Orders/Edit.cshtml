@@ -1,0 +1,69 @@
+@model ClidesCustoms.Models.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<h2>Edit Order</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="form-label">Customer</label>
+                <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.Customers, "Id", "FirstName"))">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-select">
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="ShippingAddress" class="form-label"></label>
+                <textarea asp-for="ShippingAddress" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="BillingAddress" class="form-label"></label>
+                <textarea asp-for="BillingAddress" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="PaymentMethod" class="form-label"></label>
+                <select asp-for="PaymentMethod" class="form-select">
+                    <option value="">-- Select Payment Method --</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="Cash">Cash</option>
+                </select>
+                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

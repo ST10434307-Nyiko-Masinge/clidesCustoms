@@ -1,0 +1,88 @@
+@model ClidesCustoms.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<!-- Futuristic Customer Edit Form -->
+<section class="futuristic-form-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="futuristic-form-card">
+                    <div class="form-header">
+                        <div class="form-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <h2 class="form-title">Edit Customer</h2>
+                        <p class="form-subtitle">Update customer information</p>
+                    </div>
+
+                    <form asp-action="Edit" class="futuristic-form">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger futuristic-alert"></div>
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="futuristic-label">
+                                    <i class="fas fa-user me-2"></i>First Name
+                                </label>
+                                <input asp-for="FirstName" class="futuristic-input" placeholder="Enter first name" />
+                                <span asp-validation-for="FirstName" class="validation-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="LastName" class="futuristic-label">
+                                    <i class="fas fa-user me-2"></i>Last Name
+                                </label>
+                                <input asp-for="LastName" class="futuristic-input" placeholder="Enter last name" />
+                                <span asp-validation-for="LastName" class="validation-error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Email" class="futuristic-label">
+                                <i class="fas fa-envelope me-2"></i>Email Address
+                            </label>
+                            <input asp-for="Email" class="futuristic-input" type="email" placeholder="customer@example.com" />
+                            <span asp-validation-for="Email" class="validation-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="futuristic-label">
+                                <i class="fas fa-phone me-2"></i>Phone Number
+                            </label>
+                            <input asp-for="PhoneNumber" class="futuristic-input" placeholder="+27 82 123 4567" />
+                            <span asp-validation-for="PhoneNumber" class="validation-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Address" class="futuristic-label">
+                                <i class="fas fa-map-marker-alt me-2"></i>Address
+                            </label>
+                            <textarea asp-for="Address" class="futuristic-textarea" rows="3" placeholder="Enter full address"></textarea>
+                            <span asp-validation-for="Address" class="validation-error"></span>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn futuristic-btn-primary">
+                                <i class="fas fa-save me-2"></i>
+                                <span>Save Changes</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                            <a asp-action="Index" class="btn futuristic-btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>
+                                <span>Cancel</span>
+                                <div class="btn-glow"></div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

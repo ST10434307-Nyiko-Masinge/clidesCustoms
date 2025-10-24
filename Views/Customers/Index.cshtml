@@ -1,0 +1,76 @@
+@model IEnumerable<ClidesCustoms.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="section-title">
+        <span class="title-icon"><i class="fas fa-users"></i></span>
+        Customers
+    </h2>
+    <a asp-action="Create" class="btn futuristic-btn-primary btn-lg">
+        <i class="fas fa-plus me-2"></i>
+        <span>Add New Customer</span>
+        <div class="btn-glow"></div>
+    </a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Registered</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.FirstName @customer.LastName</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.PhoneNumber</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.RegisteredAt.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Details" asp-route-id="@customer.Id" class="btn btn-outline-primary btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <h4 class="text-muted">No customers found</h4>
+        <p class="text-muted">Add your first customer to get started.</p>
+        <a asp-action="Create" class="btn btn-primary">Add Customer</a>
+    </div>
+}
